@@ -32,10 +32,14 @@ lei-organica, resolucao e portaria (--tipos escolhe). Ficam de fora: "Ato do Pre
 "Deliberação" e "Instrução de Serviço" (atos administrativos internos da Câmara) e normas sem
 anexo. Em vez de gravar texto duvidoso, o coletor RETÉM em falhas.jsonl: conversão que falha,
 corpo sem artigo inicial reconhecível, anexo com epígrafe de outra norma ou aviso de outra
-publicação, anexo que não bate com a identidade da norma. Textos idênticos (hash) são gravados uma vez.
+publicação, anexo que não bate com a identidade da norma, preâmbulo que atribui o ato ao Presidente da
+República, Interventor Federal, Governador ou Assembleia (o acervo traz decretos-lei federais e estaduais
+que citam Belo Horizonte), data do cadastro diferente da data da epígrafe. Textos idênticos (hash) são
+gravados uma vez. Uma trava (coleta.lock) impede duas coletas simultâneas (o Crawl-delay vale por host).
 """
 import argparse
 import datetime as dt
+import fcntl
 import gzip
 import hashlib
 import html
@@ -44,6 +48,7 @@ import os
 import re
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -246,6 +251,50 @@ def data_da_epigrafe(corpo):
     return ""
 
 
+def data_epigrafe_estrita(corpo):
+    """Data da linha de epígrafe ('LEI Nº 362, DE 28 DE AGOSTO DE 1930') entre as 3 primeiras linhas não vazias."""
+    vistas = 0
+    for linha in corpo.splitlines():
+        if not linha.strip():
+            continue
+        vistas += 1
+        if vistas > 3:
+            break
+        n = normalizar_chave(linha)
+        m = re.match(r"\W*(?:lei|decreto|resolucao|emenda|portaria|ato)\b.*?(\d{1,2})\s*(?:o|º|°)?\s+de\s+([a-zç]+)\s+de\s+(\d{4})", n)
+        if m and m[2] in MESES:
+            return f"{m[3]}-{MESES[m[2]]:02d}-{int(m[1]):02d}"
+    return ""
+
+
+AUTORIDADE_NAO_MUNICIPAL = re.compile(
+    r"(?:^|\n|\*)\s*(?:o|a|sua excelencia o)\s+(presidente da republica|interventor federal|"
+    r"governador|presidente do estado|assembleia legislativa|congresso nacional)\b")
+
+
+def autoridade_nao_municipal(corpo):
+    """Quem edita o ato, quando o preâmbulo (antes do Art. 1) o atribui a autoridade federal/estadual."""
+    n = "".join(c for c in unicodedata.normalize("NFD", corpo.lower()) if unicodedata.category(c) != "Mn")
+    corte = re.search(r"\bart\.?\s*\**\s*1\b", n)
+    cabeca = n[:min(corte.start() if corte else 2500, 2500)]
+    m = AUTORIDADE_NAO_MUNICIPAL.search(cabeca)
+    return m[1] if m else ""
+
+
+def travar(indice):
+    """Trava exclusiva da coleta (o Crawl-delay vale por host; duas execuções dobrariam a taxa)."""
+    indice.mkdir(parents=True, exist_ok=True)
+    f = (indice / "coleta.lock").open("w")
+    try:
+        fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except OSError:
+        f.close()
+        raise RuntimeError(f"outra coleta de Belo Horizonte já está em execução (trava {indice / 'coleta.lock'})")
+    f.write(str(os.getpid()))
+    f.flush()
+    return f
+
+
 def epigrafe_confere(corpo, tipo_fonte, numero):
     """O anexo deve citar o número da norma (com ou sem ponto de milhar) nas primeiras linhas."""
     alvo = re.sub(r"\D", "", numero)
@@ -405,6 +454,19 @@ class Coletor:
         if not corpo_integral_reconhecivel(corpo, emenda=(chave == "emenda-lo")):
             self.reter(item, "texto sem artigo inicial reconhecível; revisar integralidade")
             return "retido"
+        autoridade = autoridade_nao_municipal(corpo)
+        if autoridade:
+            self.reter(item, f"ato de autoridade não municipal ({autoridade}); fora do escopo municipal",
+                       {"autoria": det["autoria"]})
+            return "retido"
+        ep = data_epigrafe_estrita(corpo)
+        if det["promulgacao"] and ep and ep != det["promulgacao"]:
+            self.reter(item, "data do cadastro diverge da epígrafe; revisar",
+                       {"data_cadastro": det["promulgacao"], "data_epigrafe": ep})
+            return "retido"
+        if ep and not ano.startswith(ep[:4]):
+            self.reter(item, "ano da epígrafe diverge do ano do título; revisar", {"data_epigrafe": ep})
+            return "retido"
         digest = hashlib.sha256(corpo.encode()).hexdigest()
         if digest in self.hashes:
             self.stats["equivalentes"] += 1
@@ -480,6 +542,11 @@ def main(argv=None):
     if a.max_documentos < 0:
         ap.error("max-documentos deve ser não negativo")
     c = Coletor(Fonte(a.intervalo), a.atualizar_listas)
+    try:
+        trava = travar(INDICE)
+    except RuntimeError as e:
+        print("ERRO:", e, flush=True)
+        return 3
     try:
         c.abrir()
         if a.contar:

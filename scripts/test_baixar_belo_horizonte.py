@@ -150,6 +150,41 @@ class ColetaTest(unittest.TestCase):
             self.assertEqual(c.processar("lei", self.ITEM), "gravado")
             self.assertIn('data: "2020-12-31"', next(Path(tmp).glob("MG/**/*.md")).read_text())
 
+    def test_retem_decreto_lei_federal_e_interventor(self):
+        for pre in ("O Presidente da República, usando da atribuição que lhe confere o art. 180 da Constituição, decreta:",
+                    "O Interventor Federal no Estado de Minas Gerais, usando da atribuição que lhe confere o art. 6º, decreta:"):
+            with tempfile.TemporaryDirectory() as tmp:
+                corpo = ("**DECRETO-LEI Nº 8.340, DE 10 DE DEZEMBRO DE 1945**\n\n**Cede imóvel.**\n\n" + pre +
+                         "\n\n**Art. 1º** - Fica doado o terreno.\n\n**Art. 2º** - Esta lei entra em vigor.")
+                det = (DETALHE.replace("Lei - 11279/2020", "Decreto-Lei - 8340/1945").replace("31/12/2020", "10/12/1945")
+                       .replace("lei11279.doc", "d.doc"))
+                c = self.coletor(tmp, corpo, detalhe=det)
+                item = {"sil_id": "9b511daf", "titulo": "Decreto-Lei - 8340/1945", "ementa": ""}
+                self.assertEqual(c.processar("decreto-lei", item), "retido")
+                self.assertIn("não municipal", (Path(tmp) / "_indice/falhas.jsonl").read_text())
+                self.assertFalse(list(Path(tmp).glob("MG/**/*.md")))
+
+    def test_prefeito_nao_e_retido(self):
+        self.assertEqual(b.autoridade_nao_municipal("**DECRETO-LEI Nº 1**\n\nO Prefeito de Belo Horizonte decreta:\n\n**Art. 1º** - x"), "")
+        self.assertEqual(b.autoridade_nao_municipal("Lei\n\n**Art. 1º** - Compete ao Governador do Estado."), "")
+
+    def test_retem_data_cadastro_divergente_da_epigrafe(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            corpo = LEI.replace("31 DE DEZEMBRO", "31 DE AGOSTO")
+            c = self.coletor(tmp, corpo)
+            self.assertEqual(c.processar("lei", self.ITEM), "retido")
+            self.assertIn("diverge da epígrafe", (Path(tmp) / "_indice/falhas.jsonl").read_text())
+        self.assertEqual(b.data_epigrafe_estrita("**LEI Nº 362, DE 28 DE AGOSTO DE 1930**\n\nAltera a Lei 1, de 5 de maio de 1920"), "1930-08-28")
+        self.assertEqual(b.data_epigrafe_estrita("Texto\n\nAltera a Lei 1, de 5 de maio de 1920"), "")
+
+    def test_trava_impede_segunda_coleta(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            f = b.travar(Path(tmp))
+            with self.assertRaises(RuntimeError):
+                b.travar(Path(tmp))
+            f.close()
+            b.travar(Path(tmp)).close()
+
 
 if __name__ == "__main__":
     unittest.main()
