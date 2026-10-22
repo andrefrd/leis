@@ -34,7 +34,8 @@ Observado: a partir de 2000 todos os atos de LEI/DECRETO amostrados têm texto i
 é retida. A busca por ano pode devolver atos de data vizinha; o ano da pasta vem da data do título. Opcionais via --tipos: DECRETO LEI, RESOLUÇÃO, PORTARIA.
 O que fica de fora: demais tipos do catálogo (instrução normativa, ordem interna, parecer, ofício, circular,
 comunicado, despacho, projeto de lei, razões de veto etc., não são normas gerais ou não têm categoria canônica),
-anexos em PDF/XLS dos atos (tabelas orçamentárias), o "Texto Consolidado" separado e atos sem texto integral na
+o conteúdo dos anexos em PDF/XLS dos atos (tabelas orçamentárias; as URLs oficiais vão em `anexos_na_fonte` e a
+ausência é avisada em `versao_texto`), o "Texto Consolidado" separado e atos sem texto integral na
 fonte (só ementa), que ficam registrados como retidos.
 """
 import argparse
@@ -225,6 +226,17 @@ def extrair_pagina(html):
     return corpo, [a for a in avisos if a], historico
 
 
+def extrair_anexos(html):
+    """URLs absolutas dos anexos (PDF/XLS) publicados na página do ato, sem repetição, na ordem da página."""
+    urls = []
+    for href in re.findall(r'<a\s[^>]*href="([^"]*/anexo/[^"]+)"', html):
+        url = htmllib.unescape(href)
+        url = url if url.startswith("http") else BASE + (url if url.startswith("/") else "/" + url)
+        if url not in urls:
+            urls.append(url)
+    return urls
+
+
 def identidade(titulo_indice, slug):
     """(numero, ano, data iso) a partir do título do índice; o número é conferido contra o slug."""
     m = re.search(r"N[ºo°]?\s*([\d.]+(?:\s?-\s?[A-Za-z]+)?)\s+de\s+(\d{1,2})º?\s+de\s+(\w+)\s+de\s+(\d{4})", titulo_indice, re.I)
@@ -331,6 +343,10 @@ def converter_ato(ato, bruto, tipo):
         raise RuntimeError("texto sem artigo inicial reconhecível; revisar integralidade")
     notas = ["texto do Catálogo de Legislação Municipal da Prefeitura de São Paulo"]
     notas += avisos
+    anexos = extrair_anexos(html)
+    if anexos:
+        notas.append(f"{len(anexos)} anexo(s) publicado(s) na fonte NÃO incluído(s) neste texto (ver anexos_na_fonte); "
+                     "tabelas e plantas referidas no corpo constam só nesses arquivos")
     if "~~" in corpo:
         notas.append("trechos tachados na fonte (revogados, suspensos ou declarados inconstitucionais) preservados entre ~~")
     orgao = orgao_do_titulo(ato["titulo_indice"], tipo) if categoria in ("resolucoes", "portarias") else ""
@@ -345,6 +361,8 @@ def converter_ato(ato, bruto, tipo):
         meta["orgao_na_fonte"] = orgao
     if ato.get("situacao"):
         meta["situacao_na_fonte"] = ato["situacao"]
+    if anexos:
+        meta["anexos_na_fonte"] = anexos
     if historico:
         meta["historico_na_fonte"] = historico
     return meta, corpo, categoria, ano

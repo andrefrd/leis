@@ -44,7 +44,22 @@ VAZIA = '''<div class="col s12 push-s0 bx-ementa customStyle">PROIBE ESTABULOS</
 </div>'''
 
 
+ANEXOS = '''<div id="anexos" class="row"><ul>
+<li><a href="/leis/lei-17543-de-23-de-dezembro-de-2020/anexo/abc123/Tabela.pdf" target="_blank">Tabela (1 KB)</a></li>
+<li><a href="/leis/lei-17543-de-23-de-dezembro-de-2020/anexo/abc123/Tabela.pdf">dup</a></li>
+</ul></div>'''
+
+
 class SaoPauloTest(unittest.TestCase):
+    def test_anexos_sinalizados(self):
+        meta, corpo, _, _ = s.converter_ato(self.ato(), (PAGINA + ANEXOS).encode(), "LEI")
+        url = s.BASE + "/leis/lei-17543-de-23-de-dezembro-de-2020/anexo/abc123/Tabela.pdf"
+        self.assertEqual(meta["anexos_na_fonte"], [url])
+        self.assertIn("NÃO incluído", meta["versao_texto"])
+        self.assertIn(url, s.montar_md(meta, corpo))
+        meta, _, _, _ = s.converter_ato(self.ato(), PAGINA.encode(), "LEI")
+        self.assertNotIn("anexos_na_fonte", meta)
+
     def ato(self, slug="lei-17543-de-23-de-dezembro-de-2020", titulo="LEI Nº 17.543 de 23 de Dezembro de 2020"):
         return {"slug": slug, "titulo_indice": titulo, "ementa": "Dispõe sobre o subsídio.", "situacao": "SEM REVOGAÇÃO EXPRESSA"}
 
