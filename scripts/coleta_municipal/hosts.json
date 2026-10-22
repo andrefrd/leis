@@ -1,0 +1,1420 @@
+[
+{
+"uf": "SP",
+"municipio": "Campinas",
+"host": "sapl.campinas.sp.leg.br",
+"total_entries": 58038,
+"populacao_aprox": 1140000
+},
+{
+"uf": "MG",
+"municipio": "Contagem",
+"host": "sapl.contagem.mg.leg.br",
+"total_entries": 3912,
+"populacao_aprox": 621000
+},
+{
+"uf": "MG",
+"municipio": "Montes Claros",
+"host": "sapl.montesclaros.mg.leg.br",
+"total_entries": 24,
+"populacao_aprox": 415000
+},
+{
+"uf": "SP",
+"municipio": "São Vicente",
+"host": "sapl.saovicente.sp.leg.br",
+"total_entries": 9921,
+"populacao_aprox": 370000
+},
+{
+"uf": "SP",
+"municipio": "Praia Grande",
+"host": "sapl.praiagrande.sp.leg.br",
+"total_entries": 1355,
+"populacao_aprox": 350000
+},
+{
+"uf": "SP",
+"municipio": "Barueri",
+"host": "sapl.barueri.sp.leg.br",
+"total_entries": 5012,
+"populacao_aprox": 320000
+},
+{
+"uf": "MG",
+"municipio": "Divinópolis",
+"host": "sapl.divinopolis.mg.leg.br",
+"total_entries": 20790,
+"populacao_aprox": 240000
+},
+{
+"uf": "MG",
+"municipio": "Sete Lagoas",
+"host": "sapl.setelagoas.mg.leg.br",
+"total_entries": 11173,
+"populacao_aprox": 240000
+},
+{
+"uf": "MG",
+"municipio": "Patos de Minas",
+"host": "sapl.patosdeminas.mg.leg.br",
+"total_entries": 13804,
+"populacao_aprox": 153000
+},
+{
+"uf": "MG",
+"municipio": "Teófilo Otoni",
+"host": "sapl.teofilootoni.mg.leg.br",
+"total_entries": 9570,
+"populacao_aprox": 140000
+},
+{
+"uf": "MG",
+"municipio": "Varginha",
+"host": "sapl.varginha.mg.leg.br",
+"total_entries": 6765,
+"populacao_aprox": 136000
+},
+{
+"uf": "MG",
+"municipio": "Conselheiro Lafaiete",
+"host": "sapl.conselheirolafaiete.mg.leg.br",
+"total_entries": 8449,
+"populacao_aprox": 131000
+},
+{
+"uf": "SP",
+"municipio": "Votorantim",
+"host": "sapl.votorantim.sp.leg.br",
+"total_entries": 4688,
+"populacao_aprox": 127000
+},
+{
+"uf": "SP",
+"municipio": "Birigui",
+"host": "sapl.birigui.sp.leg.br",
+"total_entries": 8461,
+"populacao_aprox": 120000
+},
+{
+"uf": "MG",
+"municipio": "Araguari",
+"host": "sapl.araguari.mg.leg.br",
+"total_entries": 95,
+"populacao_aprox": 117000
+},
+{
+"uf": "MG",
+"municipio": "Araxá",
+"host": "sapl.araxa.mg.leg.br",
+"total_entries": 9616,
+"populacao_aprox": 112000
+},
+{
+"uf": "MG",
+"municipio": "Muriaé",
+"host": "sapl.muriae.mg.leg.br",
+"total_entries": 8688,
+"populacao_aprox": 109000
+},
+{
+"uf": "MG",
+"municipio": "Lavras",
+"host": "sapl.lavras.mg.leg.br",
+"total_entries": 9228,
+"populacao_aprox": 105000
+},
+{
+"uf": "MG",
+"municipio": "Coronel Fabriciano",
+"host": "sapl.coronelfabriciano.mg.leg.br",
+"total_entries": 4238,
+"populacao_aprox": 105000
+},
+{
+"uf": "MG",
+"municipio": "Ubá",
+"host": "sapl.uba.mg.leg.br",
+"total_entries": 5829,
+"populacao_aprox": 103000
+},
+{
+"uf": "MG",
+"municipio": "Itaúna",
+"host": "sapl.itauna.mg.leg.br",
+"total_entries": 7240,
+"populacao_aprox": 98000
+},
+{
+"uf": "MG",
+"municipio": "Nova Lima",
+"host": "sapl.novalima.mg.leg.br",
+"total_entries": 26,
+"populacao_aprox": 98000
+},
+{
+"uf": "MG",
+"municipio": "Pará de Minas",
+"host": "sapl.parademinas.mg.leg.br",
+"total_entries": 3896,
+"populacao_aprox": 97000
+},
+{
+"uf": "SP",
+"municipio": "São João da Boa Vista",
+"host": "sapl.saojoaodaboavista.sp.leg.br",
+"total_entries": 12091,
+"populacao_aprox": 92000
+},
+{
+"uf": "MG",
+"municipio": "Manhuaçu",
+"host": "sapl.manhuacu.mg.leg.br",
+"total_entries": 7225,
+"populacao_aprox": 92000
+},
+{
+"uf": "MG",
+"municipio": "Patrocínio",
+"host": "sapl.patrocinio.mg.leg.br",
+"total_entries": 3134,
+"populacao_aprox": 90000
+},
+{
+"uf": "MG",
+"municipio": "Timóteo",
+"host": "sapl.timoteo.mg.leg.br",
+"total_entries": 8588,
+"populacao_aprox": 88000
+},
+{
+"uf": "MG",
+"municipio": "Unaí",
+"host": "sapl.unai.mg.leg.br",
+"total_entries": 11357,
+"populacao_aprox": 86000
+},
+{
+"uf": "SC",
+"municipio": "São Bento do Sul",
+"host": "sapl.saobentodosul.sc.leg.br",
+"total_entries": 220,
+"populacao_aprox": 84000
+},
+{
+"uf": "MG",
+"municipio": "Alfenas",
+"host": "sapl.alfenas.mg.leg.br",
+"total_entries": 573,
+"populacao_aprox": 80000
+},
+{
+"uf": "SP",
+"municipio": "Ibiúna",
+"host": "sapl.ibiuna.sp.leg.br",
+"total_entries": 3424,
+"populacao_aprox": 78000
+},
+{
+"uf": "MG",
+"municipio": "Cataguases",
+"host": "sapl.cataguases.mg.leg.br",
+"total_entries": 317,
+"populacao_aprox": 75000
+},
+{
+"uf": "SC",
+"municipio": "Rio do Sul",
+"host": "sapl.camarariodosul.sc.gov.br",
+"total_entries": 232,
+"populacao_aprox": 72000
+},
+{
+"uf": "MG",
+"municipio": "Formiga",
+"host": "sapl.formiga.mg.leg.br",
+"total_entries": 6565,
+"populacao_aprox": 69000
+},
+{
+"uf": "SP",
+"municipio": "Mococa",
+"host": "sapl.mococa.sp.leg.br",
+"total_entries": 15714,
+"populacao_aprox": 68000
+},
+{
+"uf": "MG",
+"municipio": "Januária",
+"host": "sapl.januaria.mg.leg.br",
+"total_entries": 3696,
+"populacao_aprox": 67000
+},
+{
+"uf": "SP",
+"municipio": "Bertioga",
+"host": "sapl.bertioga.sp.leg.br",
+"total_entries": 7643,
+"populacao_aprox": 64000
+},
+{
+"uf": "MG",
+"municipio": "Pedro Leopoldo",
+"host": "sapl.pedroleopoldo.mg.leg.br",
+"total_entries": 6567,
+"populacao_aprox": 62000
+},
+{
+"uf": "SP",
+"municipio": "Monte Mor",
+"host": "sapl.montemor.sp.leg.br",
+"total_entries": 4203,
+"populacao_aprox": 62000
+},
+{
+"uf": "MG",
+"municipio": "Frutal",
+"host": "sapl.frutal.mg.leg.br",
+"total_entries": 6211,
+"populacao_aprox": 60000
+},
+{
+"uf": "MG",
+"municipio": "Ponte Nova",
+"host": "sapl.pontenova.mg.leg.br",
+"total_entries": 9106,
+"populacao_aprox": 59000
+},
+{
+"uf": "SP",
+"municipio": "Registro",
+"host": "sapl.registro.sp.leg.br",
+"total_entries": 6225,
+"populacao_aprox": 57000
+},
+{
+"uf": "SP",
+"municipio": "Piedade",
+"host": "sapl.piedade.sp.leg.br",
+"total_entries": 6217,
+"populacao_aprox": 55000
+},
+{
+"uf": "SC",
+"municipio": "Canoinhas",
+"host": "sapl.canoinhas.sc.leg.br",
+"total_entries": 11034,
+"populacao_aprox": 54000
+},
+{
+"uf": "MG",
+"municipio": "Congonhas",
+"host": "sapl.congonhas.mg.leg.br",
+"total_entries": 9344,
+"populacao_aprox": 54000
+},
+{
+"uf": "SP",
+"municipio": "Porto Feliz",
+"host": "sapl.portofeliz.sp.leg.br",
+"total_entries": 7294,
+"populacao_aprox": 54000
+},
+{
+"uf": "SP",
+"municipio": "Artur Nogueira",
+"host": "sapl.arturnogueira.sp.leg.br",
+"total_entries": 5026,
+"populacao_aprox": 54000
+},
+{
+"uf": "MG",
+"municipio": "Itabirito",
+"host": "sapl.itabirito.mg.leg.br",
+"total_entries": 5240,
+"populacao_aprox": 53000
+},
+{
+"uf": "MG",
+"municipio": "Lagoa da Prata",
+"host": "sapl.lagoadaprata.mg.leg.br",
+"total_entries": 6510,
+"populacao_aprox": 52000
+},
+{
+"uf": "MG",
+"municipio": "Bom Despacho",
+"host": "sapl.bomdespacho.mg.leg.br",
+"total_entries": 2956,
+"populacao_aprox": 52000
+},
+{
+"uf": "MG",
+"municipio": "Santana do Paraíso",
+"host": "sapl.santanadoparaiso.mg.leg.br",
+"total_entries": 1873,
+"populacao_aprox": 50000
+},
+{
+"uf": "SP",
+"municipio": "Dracena",
+"host": "sapl.dracena.sp.leg.br",
+"total_entries": 7855,
+"populacao_aprox": 48000
+},
+{
+"uf": "MG",
+"municipio": "João Pinheiro",
+"host": "sapl.joaopinheiro.mg.leg.br",
+"total_entries": 3784,
+"populacao_aprox": 47000
+},
+{
+"uf": "SP",
+"municipio": "Serrana",
+"host": "sapl.serrana.sp.leg.br",
+"total_entries": 870,
+"populacao_aprox": 47000
+},
+{
+"uf": "SP",
+"municipio": "Jardinópolis",
+"host": "sapl.jardinopolis.sp.leg.br",
+"total_entries": 403,
+"populacao_aprox": 47000
+},
+{
+"uf": "SP",
+"municipio": "Garça",
+"host": "sapl.garca.sp.leg.br",
+"total_entries": 8452,
+"populacao_aprox": 44000
+},
+{
+"uf": "MG",
+"municipio": "Arcos",
+"host": "sapl.arcos.mg.leg.br",
+"total_entries": 4838,
+"populacao_aprox": 42000
+},
+{
+"uf": "MG",
+"municipio": "Andradas",
+"host": "sapl.andradas.mg.leg.br",
+"total_entries": 1001,
+"populacao_aprox": 41000
+},
+{
+"uf": "SC",
+"municipio": "Tijucas",
+"host": "sapl.tijucas.sc.leg.br",
+"total_entries": 905,
+"populacao_aprox": 40000
+},
+{
+"uf": "SP",
+"municipio": "Socorro",
+"host": "sapl.socorro.sp.leg.br",
+"total_entries": 790,
+"populacao_aprox": 40000
+},
+{
+"uf": "SP",
+"municipio": "Ituverava",
+"host": "sapl.ituverava.sp.leg.br",
+"total_entries": 113,
+"populacao_aprox": 40000
+},
+{
+"uf": "MG",
+"municipio": "Iturama",
+"host": "sapl.iturama.mg.leg.br",
+"total_entries": 9498,
+"populacao_aprox": 39000
+},
+{
+"uf": "SP",
+"municipio": "Guariba",
+"host": "sapl.guariba.sp.leg.br",
+"total_entries": 4991,
+"populacao_aprox": 38000
+},
+{
+"uf": "MG",
+"municipio": "Piumhi",
+"host": "sapl.piumhi.mg.leg.br",
+"total_entries": 4728,
+"populacao_aprox": 37000
+},
+{
+"uf": "SP",
+"municipio": "Adamantina",
+"host": "sapl.adamantina.sp.leg.br",
+"total_entries": 5189,
+"populacao_aprox": 35000
+},
+{
+"uf": "MG",
+"municipio": "Ouro Fino",
+"host": "sapl.ourofino.mg.leg.br",
+"total_entries": 4745,
+"populacao_aprox": 33000
+},
+{
+"uf": "SC",
+"municipio": "Itapoá",
+"host": "sapl.itapoa.sc.leg.br",
+"total_entries": 5108,
+"populacao_aprox": 30000
+},
+{
+"uf": "SP",
+"municipio": "Morro Agudo",
+"host": "sapl.morroagudo.sp.leg.br",
+"total_entries": 4723,
+"populacao_aprox": 30000
+},
+{
+"uf": "MG",
+"municipio": "Carmo do Paranaíba",
+"host": "sapl.carmodoparanaiba.mg.leg.br",
+"total_entries": 4170,
+"populacao_aprox": 30000
+},
+{
+"uf": "SP",
+"municipio": "Laranjal Paulista",
+"host": "sapl.laranjalpaulista.sp.leg.br",
+"total_entries": 4753,
+"populacao_aprox": 27000
+},
+{
+"uf": "SC",
+"municipio": "Santo Amaro da Imperatriz",
+"host": "sapl.santoamarodaimperatriz.sc.leg.br",
+"total_entries": 31,
+"populacao_aprox": 25000
+},
+{
+"uf": "SC",
+"municipio": "São Lourenço do Oeste",
+"host": "sapl.saolourencodooeste.sc.leg.br",
+"total_entries": 3998,
+"populacao_aprox": 24000
+},
+{
+"uf": "MG",
+"municipio": "Manhumirim",
+"host": "sapl.manhumirim.mg.leg.br",
+"total_entries": 3717,
+"populacao_aprox": 21000
+},
+{
+"uf": "SP",
+"municipio": "Miracatu",
+"host": "sapl.miracatu.sp.leg.br",
+"total_entries": 5478,
+"populacao_aprox": 20000
+},
+{
+"uf": "MG",
+"municipio": "Arinos",
+"host": "sapl.arinos.mg.leg.br",
+"total_entries": 5323,
+"populacao_aprox": 18000
+},
+{
+"uf": "SP",
+"municipio": "Pradópolis",
+"host": "sapl.pradopolis.sp.leg.br",
+"total_entries": 5028,
+"populacao_aprox": 18000
+},
+{
+"uf": "SP",
+"municipio": "Buritama",
+"host": "sapl.buritama.sp.leg.br",
+"total_entries": 7704,
+"populacao_aprox": 17000
+},
+{
+"uf": "SP",
+"municipio": "Ilha Comprida",
+"host": "sapl.ilhacomprida.sp.leg.br",
+"total_entries": 4062,
+"populacao_aprox": 12000
+},
+{
+"uf": "SP",
+"municipio": "Parapuã",
+"host": "sapl.parapua.sp.leg.br",
+"total_entries": 8028,
+"populacao_aprox": 11000
+},
+{
+"uf": "MG",
+"municipio": "Carneirinho",
+"host": "sapl.carneirinho.mg.leg.br",
+"total_entries": 9247,
+"populacao_aprox": 10000
+},
+{
+"uf": "SP",
+"municipio": "Indiaporã",
+"host": "sapl.indiapora.sp.leg.br",
+"total_entries": 3578
+},
+{
+"uf": "SC",
+"municipio": "Anchieta",
+"host": "sapl.anchieta.sc.leg.br",
+"total_entries": 3473
+},
+{
+"uf": "SP",
+"municipio": "Itapuí",
+"host": "sapl.itapui.sp.leg.br",
+"total_entries": 3472
+},
+{
+"uf": "SP",
+"municipio": "Barrinha",
+"host": "sapl.barrinha.sp.leg.br",
+"total_entries": 3350
+},
+{
+"uf": "MG",
+"municipio": "Campos Altos",
+"host": "sapl.camposaltos.mg.leg.br",
+"total_entries": 3288
+},
+{
+"uf": "SP",
+"municipio": "Fernão",
+"host": "sapl.fernao.sp.leg.br",
+"total_entries": 3223
+},
+{
+"uf": "SC",
+"municipio": "Guarujá do Sul",
+"host": "sapl.guarujadosul.sc.leg.br",
+"total_entries": 3205
+},
+{
+"uf": "MG",
+"municipio": "São Francisco",
+"host": "sapl.saofrancisco.mg.leg.br",
+"total_entries": 3159
+},
+{
+"uf": "MG",
+"municipio": "Espera Feliz",
+"host": "sapl.esperafeliz.mg.leg.br",
+"total_entries": 2992
+},
+{
+"uf": "MG",
+"municipio": "Monte Santo de Minas",
+"host": "sapl.montesantodeminas.mg.leg.br",
+"total_entries": 2987
+},
+{
+"uf": "SP",
+"municipio": "Turiúba",
+"host": "sapl.turiuba.sp.leg.br",
+"total_entries": 2982
+},
+{
+"uf": "MG",
+"municipio": "Canápolis",
+"host": "sapl.canapolis.mg.leg.br",
+"total_entries": 2975
+},
+{
+"uf": "SP",
+"municipio": "Planalto",
+"host": "sapl.planalto.sp.leg.br",
+"total_entries": 2945
+},
+{
+"uf": "SP",
+"municipio": "Sales Oliveira",
+"host": "sapl.salesoliveira.sp.leg.br",
+"total_entries": 2937
+},
+{
+"uf": "MG",
+"municipio": "Heliodora",
+"host": "sapl.heliodora.mg.leg.br",
+"total_entries": 2912
+},
+{
+"uf": "MG",
+"municipio": "Limeira do Oeste",
+"host": "sapl.limeiradooeste.mg.leg.br",
+"total_entries": 2845
+},
+{
+"uf": "MG",
+"municipio": "Dores do Indaiá",
+"host": "sapl.doresdoindaia.mg.leg.br",
+"total_entries": 2836
+},
+{
+"uf": "MG",
+"municipio": "Ibiá",
+"host": "sapl.ibia.mg.leg.br",
+"total_entries": 2739
+},
+{
+"uf": "SC",
+"municipio": "Bom Retiro",
+"host": "sapl.bomretiro.sc.leg.br",
+"total_entries": 2727
+},
+{
+"uf": "MG",
+"municipio": "Monte Alegre de Minas",
+"host": "sapl.montealegredeminas.mg.leg.br",
+"total_entries": 2720
+},
+{
+"uf": "MG",
+"municipio": "Bicas",
+"host": "sapl.bicas.mg.leg.br",
+"total_entries": 2666
+},
+{
+"uf": "MG",
+"municipio": "Itaú de Minas",
+"host": "sapl.itaudeminas.mg.leg.br",
+"total_entries": 2642
+},
+{
+"uf": "SP",
+"municipio": "Álvares Machado",
+"host": "sapl.alvaresmachado.sp.leg.br",
+"total_entries": 2594
+},
+{
+"uf": "SP",
+"municipio": "Cunha",
+"host": "sapl.cunha.sp.leg.br",
+"total_entries": 2588
+},
+{
+"uf": "MG",
+"municipio": "Pouso Alto",
+"host": "sapl.pousoalto.mg.leg.br",
+"total_entries": 2531
+},
+{
+"uf": "MG",
+"municipio": "Rio Pardo de Minas",
+"host": "sapl.riopardodeminas.mg.leg.br",
+"total_entries": 2507
+},
+{
+"uf": "MG",
+"municipio": "Itatiaiuçu",
+"host": "sapl.itatiaiucu.mg.leg.br",
+"total_entries": 2502
+},
+{
+"uf": "MG",
+"municipio": "Madre de Deus de Minas",
+"host": "sapl.madrededeusdeminas.mg.leg.br",
+"total_entries": 2494
+},
+{
+"uf": "SP",
+"municipio": "Iguape",
+"host": "sapl.iguape.sp.leg.br",
+"total_entries": 2480
+},
+{
+"uf": "SP",
+"municipio": "Bofete",
+"host": "sapl.bofete.sp.leg.br",
+"total_entries": 2471
+},
+{
+"uf": "SP",
+"municipio": "Embu-Guaçu",
+"host": "sapl.embuguacu.sp.leg.br",
+"total_entries": 2442
+},
+{
+"uf": "MG",
+"municipio": "Buritis",
+"host": "sapl.buritis.mg.leg.br",
+"total_entries": 2352
+},
+{
+"uf": "MG",
+"municipio": "Indianópolis",
+"host": "sapl.indianopolis.mg.leg.br",
+"total_entries": 2324
+},
+{
+"uf": "SP",
+"municipio": "Lindóia",
+"host": "sapl.lindoia.sp.leg.br",
+"total_entries": 2284
+},
+{
+"uf": "MG",
+"municipio": "Araporã",
+"host": "sapl.arapora.mg.leg.br",
+"total_entries": 2270
+},
+{
+"uf": "SC",
+"municipio": "Major Vieira",
+"host": "sapl.majorvieira.sc.leg.br",
+"total_entries": 2197
+},
+{
+"uf": "MG",
+"municipio": "Rio Pomba",
+"host": "sapl.riopomba.mg.leg.br",
+"total_entries": 2185
+},
+{
+"uf": "MG",
+"municipio": "Bonfinópolis de Minas",
+"host": "sapl.bonfinopolisdeminas.mg.leg.br",
+"total_entries": 2173
+},
+{
+"uf": "MG",
+"municipio": "Santo Antônio do Monte",
+"host": "sapl.santoantoniodomonte.mg.leg.br",
+"total_entries": 2148
+},
+{
+"uf": "MG",
+"municipio": "Delfim Moreira",
+"host": "sapl.delfimmoreira.mg.leg.br",
+"total_entries": 2119
+},
+{
+"uf": "MG",
+"municipio": "São Gotardo",
+"host": "sapl.saogotardo.mg.leg.br",
+"total_entries": 2097
+},
+{
+"uf": "MG",
+"municipio": "Natércia",
+"host": "sapl.natercia.mg.leg.br",
+"total_entries": 2059
+},
+{
+"uf": "MG",
+"municipio": "Matias Barbosa",
+"host": "sapl.matiasbarbosa.mg.leg.br",
+"total_entries": 2037
+},
+{
+"uf": "SP",
+"municipio": "Meridiano",
+"host": "sapl.meridiano.sp.leg.br",
+"total_entries": 2023
+},
+{
+"uf": "SP",
+"municipio": "Itaporanga",
+"host": "sapl.itaporanga.sp.leg.br",
+"total_entries": 1977
+},
+{
+"uf": "SP",
+"municipio": "Igarapava",
+"host": "sapl.igarapava.sp.leg.br",
+"total_entries": 1945
+},
+{
+"uf": "MG",
+"municipio": "São Sebastião da Bela Vista",
+"host": "sapl.saosebastiaodabelavista.mg.leg.br",
+"total_entries": 1893
+},
+{
+"uf": "SC",
+"municipio": "Luiz Alves",
+"host": "sapl.luizalves.sc.leg.br",
+"total_entries": 1876
+},
+{
+"uf": "MG",
+"municipio": "Tocantins",
+"host": "sapl.tocantins.mg.leg.br",
+"total_entries": 1874
+},
+{
+"uf": "MG",
+"municipio": "Campestre",
+"host": "sapl.campestre.mg.leg.br",
+"total_entries": 1778
+},
+{
+"uf": "MG",
+"municipio": "Estiva",
+"host": "sapl.estiva.mg.leg.br",
+"total_entries": 1768
+},
+{
+"uf": "MG",
+"municipio": "Lima Duarte",
+"host": "sapl.limaduarte.mg.leg.br",
+"total_entries": 1747
+},
+{
+"uf": "MG",
+"municipio": "Sarzedo",
+"host": "sapl.sarzedo.mg.leg.br",
+"total_entries": 1733
+},
+{
+"uf": "SP",
+"municipio": "Caconde",
+"host": "sapl.caconde.sp.leg.br",
+"total_entries": 1728
+},
+{
+"uf": "SP",
+"municipio": "Bariri",
+"host": "sapl.bariri.sp.leg.br",
+"total_entries": 1682
+},
+{
+"uf": "SP",
+"municipio": "Zacarias",
+"host": "sapl.zacarias.sp.leg.br",
+"total_entries": 1674
+},
+{
+"uf": "MG",
+"municipio": "Ijaci",
+"host": "sapl.ijaci.mg.leg.br",
+"total_entries": 1627
+},
+{
+"uf": "MG",
+"municipio": "Planura",
+"host": "sapl.planura.mg.leg.br",
+"total_entries": 1585
+},
+{
+"uf": "MG",
+"municipio": "Pedralva",
+"host": "sapl.pedralva.mg.leg.br",
+"total_entries": 1580
+},
+{
+"uf": "SP",
+"municipio": "Jambeiro",
+"host": "sapl.jambeiro.sp.leg.br",
+"total_entries": 1571
+},
+{
+"uf": "MG",
+"municipio": "Careaçu",
+"host": "sapl.careacu.mg.leg.br",
+"total_entries": 1570
+},
+{
+"uf": "MG",
+"municipio": "Bom Jardim de Minas",
+"host": "sapl.bomjardimdeminas.mg.leg.br",
+"total_entries": 1552
+},
+{
+"uf": "SP",
+"municipio": "Lavrinhas",
+"host": "sapl.lavrinhas.sp.leg.br",
+"total_entries": 1546
+},
+{
+"uf": "MG",
+"municipio": "Cabeceira Grande",
+"host": "sapl.cabeceiragrande.mg.leg.br",
+"total_entries": 1538
+},
+{
+"uf": "MG",
+"municipio": "Tocos do Moji",
+"host": "sapl.tocosdomoji.mg.leg.br",
+"total_entries": 1517
+},
+{
+"uf": "SP",
+"municipio": "São José do Barreiro",
+"host": "sapl.saojosedobarreiro.sp.leg.br",
+"total_entries": 1510
+},
+{
+"uf": "MG",
+"municipio": "Claraval",
+"host": "sapl.claraval.mg.leg.br",
+"total_entries": 1503
+},
+{
+"uf": "MG",
+"municipio": "Visconde do Rio Branco",
+"host": "sapl.viscondedoriobranco.mg.leg.br",
+"total_entries": 1502
+},
+{
+"uf": "MG",
+"municipio": "Mirabela",
+"host": "sapl.mirabela.mg.leg.br",
+"total_entries": 1465
+},
+{
+"uf": "MG",
+"municipio": "Piedade de Ponte Nova",
+"host": "sapl.piedadedepontenova.mg.leg.br",
+"total_entries": 1457
+},
+{
+"uf": "MG",
+"municipio": "Santana do Deserto",
+"host": "sapl.santanadodeserto.mg.leg.br",
+"total_entries": 1455
+},
+{
+"uf": "MG",
+"municipio": "Chapada Gaúcha",
+"host": "sapl.chapadagaucha.mg.leg.br",
+"total_entries": 1455
+},
+{
+"uf": "MG",
+"municipio": "Itapeva",
+"host": "sapl.itapeva.mg.leg.br",
+"total_entries": 1402
+},
+{
+"uf": "SP",
+"municipio": "Pariquera-Açu",
+"host": "sapl.pariqueraacu.sp.leg.br",
+"total_entries": 1400
+},
+{
+"uf": "MG",
+"municipio": "Urucuia",
+"host": "sapl.urucuia.mg.leg.br",
+"total_entries": 1359
+},
+{
+"uf": "SP",
+"municipio": "Espírito Santo do Turvo",
+"host": "sapl.espiritosantodoturvo.sp.leg.br",
+"total_entries": 1336
+},
+{
+"uf": "SP",
+"municipio": "Taguaí",
+"host": "sapl.taguai.sp.leg.br",
+"total_entries": 1312
+},
+{
+"uf": "MG",
+"municipio": "São Sebastião do Rio Verde",
+"host": "sapl.saosebastiaodorioverde.mg.leg.br",
+"total_entries": 1301
+},
+{
+"uf": "MG",
+"municipio": "Lagoa Grande",
+"host": "sapl.lagoagrande.mg.leg.br",
+"total_entries": 1290
+},
+{
+"uf": "MG",
+"municipio": "Monte Azul",
+"host": "sapl.monteazul.mg.leg.br",
+"total_entries": 1233
+},
+{
+"uf": "MG",
+"municipio": "Entre Rios de Minas",
+"host": "sapl.entreriosdeminas.mg.leg.br",
+"total_entries": 1228
+},
+{
+"uf": "SP",
+"municipio": "Areias",
+"host": "sapl.areias.sp.leg.br",
+"total_entries": 1200
+},
+{
+"uf": "MG",
+"municipio": "Natalândia",
+"host": "sapl.natalandia.mg.leg.br",
+"total_entries": 1168
+},
+{
+"uf": "MG",
+"municipio": "Congonhal",
+"host": "sapl.congonhal.mg.leg.br",
+"total_entries": 1092
+},
+{
+"uf": "MG",
+"municipio": "Brasilândia de Minas",
+"host": "sapl.brasilandiademinas.mg.leg.br",
+"total_entries": 1068
+},
+{
+"uf": "MG",
+"municipio": "Riachinho",
+"host": "sapl.riachinho.mg.leg.br",
+"total_entries": 1049
+},
+{
+"uf": "SP",
+"municipio": "Salmourão",
+"host": "sapl.salmourao.sp.leg.br",
+"total_entries": 1032
+},
+{
+"uf": "SP",
+"municipio": "Ipiguá",
+"host": "sapl.ipigua.sp.leg.br",
+"total_entries": 1002
+},
+{
+"uf": "SP",
+"municipio": "Taquaral",
+"host": "sapl.taquaral.sp.leg.br",
+"total_entries": 966
+},
+{
+"uf": "MG",
+"municipio": "Uruana de Minas",
+"host": "sapl.uruanademinas.mg.leg.br",
+"total_entries": 949
+},
+{
+"uf": "MG",
+"municipio": "Japaraíba",
+"host": "sapl.japaraiba.mg.leg.br",
+"total_entries": 878
+},
+{
+"uf": "MG",
+"municipio": "Formoso",
+"host": "sapl.formoso.mg.leg.br",
+"total_entries": 772
+},
+{
+"uf": "MG",
+"municipio": "Santana da Vargem",
+"host": "sapl.santanadavargem.mg.leg.br",
+"total_entries": 748
+},
+{
+"uf": "MG",
+"municipio": "Varjão de Minas",
+"host": "sapl.varjaodeminas.mg.leg.br",
+"total_entries": 736
+},
+{
+"uf": "MG",
+"municipio": "Cana Verde",
+"host": "sapl.canaverde.mg.leg.br",
+"total_entries": 690
+},
+{
+"uf": "MG",
+"municipio": "Araçuaí",
+"host": "sapl.aracuai.mg.leg.br",
+"total_entries": 651
+},
+{
+"uf": "MG",
+"municipio": "Lajinha",
+"host": "sapl.lajinha.mg.leg.br",
+"total_entries": 631
+},
+{
+"uf": "MG",
+"municipio": "Vargem Bonita",
+"host": "sapl.vargembonita.mg.leg.br",
+"total_entries": 596
+},
+{
+"uf": "MG",
+"municipio": "Dom Bosco",
+"host": "sapl.dombosco.mg.leg.br",
+"total_entries": 594
+},
+{
+"uf": "MG",
+"municipio": "Luz",
+"host": "sapl.luz.mg.leg.br",
+"total_entries": 591
+},
+{
+"uf": "SC",
+"municipio": "Zortéa",
+"host": "sapl.zortea.sc.leg.br",
+"total_entries": 583
+},
+{
+"uf": "MG",
+"municipio": "São José da Varginha",
+"host": "sapl.saojosedavarginha.mg.leg.br",
+"total_entries": 543
+},
+{
+"uf": "SP",
+"municipio": "Américo Brasiliense",
+"host": "sapl.americobrasiliense.sp.leg.br",
+"total_entries": 531
+},
+{
+"uf": "MG",
+"municipio": "Jacuí",
+"host": "sapl.jacui.mg.leg.br",
+"total_entries": 526
+},
+{
+"uf": "SC",
+"municipio": "Tunápolis",
+"host": "sapl.tunapolis.sc.leg.br",
+"total_entries": 519
+},
+{
+"uf": "MG",
+"municipio": "Pedrinópolis",
+"host": "sapl.pedrinopolis.mg.leg.br",
+"total_entries": 512
+},
+{
+"uf": "MG",
+"municipio": "Santana do Jacaré",
+"host": "sapl.santanadojacare.mg.leg.br",
+"total_entries": 491
+},
+{
+"uf": "MG",
+"municipio": "Perdizes",
+"host": "sapl.perdizes.mg.leg.br",
+"total_entries": 458
+},
+{
+"uf": "SP",
+"municipio": "Guatapará",
+"host": "sapl.guatapara.sp.leg.br",
+"total_entries": 418
+},
+{
+"uf": "MG",
+"municipio": "Águas Formosas",
+"host": "sapl.aguasformosas.mg.leg.br",
+"total_entries": 400
+},
+{
+"uf": "MG",
+"municipio": "Itamogi",
+"host": "sapl.itamogi.mg.leg.br",
+"total_entries": 372
+},
+{
+"uf": "SC",
+"municipio": "Imbuia",
+"host": "sapl.imbuia.sc.leg.br",
+"total_entries": 352
+},
+{
+"uf": "MG",
+"municipio": "São José da Barra",
+"host": "sapl.saojosedabarra.mg.leg.br",
+"total_entries": 331
+},
+{
+"uf": "SC",
+"municipio": "Schroeder",
+"host": "sapl.schroeder.sc.leg.br",
+"total_entries": 293
+},
+{
+"uf": "MG",
+"municipio": "São Gonçalo do Sapucaí",
+"host": "sapl.saogoncalodosapucai.mg.leg.br",
+"total_entries": 291
+},
+{
+"uf": "MG",
+"municipio": "Bom Jesus do Amparo",
+"host": "sapl.bomjesusdoamparo.mg.leg.br",
+"total_entries": 291
+},
+{
+"uf": "MG",
+"municipio": "Olímpio Noronha",
+"host": "sapl.olimpionoronha.mg.leg.br",
+"total_entries": 266
+},
+{
+"uf": "MG",
+"municipio": "Pequeri",
+"host": "sapl.pequeri.mg.leg.br",
+"total_entries": 262
+},
+{
+"uf": "MG",
+"municipio": "Arapuá",
+"host": "sapl.arapua.mg.leg.br",
+"total_entries": 246
+},
+{
+"uf": "MG",
+"municipio": "Capitão Enéas",
+"host": "sapl.capitaoeneas.mg.leg.br",
+"total_entries": 232
+},
+{
+"uf": "SC",
+"municipio": "Monte Carlo",
+"host": "sapl.montecarlo.sc.leg.br",
+"total_entries": 217
+},
+{
+"uf": "MG",
+"municipio": "Senador José Bento",
+"host": "sapl.senadorjosebento.mg.leg.br",
+"total_entries": 212
+},
+{
+"uf": "MG",
+"municipio": "Tapira",
+"host": "sapl.tapira.mg.leg.br",
+"total_entries": 176
+},
+{
+"uf": "MG",
+"municipio": "São Gonçalo do Pará",
+"host": "sapl.saogoncalodopara.mg.leg.br",
+"total_entries": 165
+},
+{
+"uf": "MG",
+"municipio": "Pedras de Maria da Cruz",
+"host": "sapl.pedrasdemariadacruz.mg.leg.br",
+"total_entries": 162
+},
+{
+"uf": "MG",
+"municipio": "Cambuquira",
+"host": "sapl.cambuquira.mg.leg.br",
+"total_entries": 153
+},
+{
+"uf": "MG",
+"municipio": "Alpinópolis",
+"host": "sapl.alpinopolis.mg.leg.br",
+"total_entries": 147
+},
+{
+"uf": "MG",
+"municipio": "Paraguaçu",
+"host": "sapl.paraguacu.mg.leg.br",
+"total_entries": 145
+},
+{
+"uf": "MG",
+"municipio": "Sem-Peixe",
+"host": "sapl.sempeixe.mg.leg.br",
+"total_entries": 112
+},
+{
+"uf": "MG",
+"municipio": "Durandé",
+"host": "sapl.durande.mg.leg.br",
+"total_entries": 109
+},
+{
+"uf": "MG",
+"municipio": "Carmo do Cajuru",
+"host": "sapl.carmodocajuru.mg.leg.br",
+"total_entries": 108
+},
+{
+"uf": "SP",
+"municipio": "Magda",
+"host": "sapl.magda.sp.leg.br",
+"total_entries": 103
+},
+{
+"uf": "MG",
+"municipio": "Capitólio",
+"host": "sapl.capitolio.mg.leg.br",
+"total_entries": 93
+},
+{
+"uf": "MG",
+"municipio": "Bocaiúva",
+"host": "sapl.bocaiuva.mg.leg.br",
+"total_entries": 89
+},
+{
+"uf": "MG",
+"municipio": "Santa Bárbara",
+"host": "sapl.santabarbara.mg.leg.br",
+"total_entries": 85
+},
+{
+"uf": "MG",
+"municipio": "Cláudio",
+"host": "sapl.claudio.mg.leg.br",
+"total_entries": 57
+},
+{
+"uf": "MG",
+"municipio": "Campina Verde",
+"host": "sapl.campinaverde.mg.leg.br",
+"total_entries": 48
+},
+{
+"uf": "SC",
+"municipio": "Princesa",
+"host": "sapl.princesa.sc.leg.br",
+"total_entries": 40
+},
+{
+"uf": "MG",
+"municipio": "União de Minas",
+"host": "sapl.uniaodeminas.mg.leg.br",
+"total_entries": 37
+},
+{
+"uf": "SC",
+"municipio": "São Carlos",
+"host": "sapl.saocarlos.sc.leg.br",
+"total_entries": 33
+},
+{
+"uf": "MG",
+"municipio": "Carmo da Mata",
+"host": "sapl.carmodamata.mg.leg.br",
+"total_entries": 30
+},
+{
+"uf": "MG",
+"municipio": "Caputira",
+"host": "sapl.caputira.mg.leg.br",
+"total_entries": 26
+},
+{
+"uf": "MG",
+"municipio": "Florestal",
+"host": "sapl.florestal.mg.leg.br",
+"total_entries": 25
+}
+]

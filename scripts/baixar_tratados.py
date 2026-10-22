@@ -15,7 +15,7 @@ import urllib.parse
 import urllib.request
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from comum import AVISO_OCR, Rede, decodificar, ocr_pdf, texto_pdf_para_md, yaml_str
+from comum import AVISO_OCR, Rede, decodificar, ocr_pdf_motor, aviso_ocr, texto_pdf_para_md, yaml_str
 from html2md import convert
 
 RAIZ = Path(__file__).resolve().parent.parent / "tratados"
@@ -158,6 +158,7 @@ def processar(rede, d):
         return "pulado"
     bruto = baixar(rede, d["url"])
     ocr = False
+    motor_ocr = ""
     if bruto.startswith(b"%PDF"):
         pdf = RAIZ / "_fonte" / (hashlib.sha256(d["url"].encode()).hexdigest() + ".pdf")
         if not pdf.exists():
@@ -167,7 +168,7 @@ def processar(rede, d):
         t = r.stdout.decode("utf-8")
         paginas = max(1, t.count("\f"))
         if len(re.sub(r"\W", "", t)) / paginas < 300 or not ARTIGO.search(t):
-            t = ocr_pdf(bruto)
+            t, motor_ocr = ocr_pdf_motor(bruto)
             ocr = True
         corpo = texto_pdf_para_md(t)
     else:
@@ -188,7 +189,7 @@ def processar(rede, d):
     linhas = ["---"]
     for k, v in valores.items():
         linhas.append(f"{k}: {str(v).lower() if isinstance(v, bool) else v if k == 'baixado_em' else yaml_str(v)}")
-    linhas += ["---", "", "# " + d["titulo"], "", (AVISO_OCR if ocr else "") + corpo]
+    linhas += ["---", "", "# " + d["titulo"], "", (aviso_ocr(motor_ocr) if ocr else "") + corpo]
     destino.parent.mkdir(parents=True, exist_ok=True)
     tmp = destino.with_suffix(".tmp")
     tmp.write_text("\n".join(linhas), encoding="utf-8")
