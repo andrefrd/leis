@@ -1,4 +1,3 @@
-sapl.itauna.mg.leg.br
 sapl.novalima.mg.leg.br
 sapl.parademinas.mg.leg.br
 sapl.saojoaodaboavista.sp.leg.br

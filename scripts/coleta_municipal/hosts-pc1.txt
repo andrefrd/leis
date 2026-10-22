@@ -101,3 +101,4 @@ sapl.campinaverde.mg.leg.br
 sapl.princesa.sc.leg.br
 sapl.saocarlos.sc.leg.br
 sapl.caputira.mg.leg.br
+sapl.itauna.mg.leg.br

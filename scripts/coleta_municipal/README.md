@@ -61,8 +61,8 @@ aceitas: `REPO`, `LOGS`, `HOSTS`, `PAR`, `MIN_GB`, `BRANCH`, `INTERVALO`.
 
 | Lista | Hosts | Registros na API | Onde roda |
 | --- | ---: | ---: | --- |
-| `hosts-pc1.txt` | 103 | cerca de 356 mil | PC original (inclui os 40 hosts já iniciados lá, Campinas entre eles) |
-| `hosts-pc2.txt` | 120 | cerca de 356 mil | segundo PC, nenhum host iniciado |
+| `hosts-pc1.txt` | 104 | cerca de 356 mil | PC original (inclui os hosts já iniciados lá, Campinas entre eles) |
+| `hosts-pc2.txt` | 119 | cerca de 356 mil | segundo PC, nenhum host iniciado |
 
 **Nunca rode o mesmo host em dois PCs.** Os arquivos saem com o mesmo caminho e `baixado_em` diferente, o que gera
 conflito no merge, e a câmara recebe o dobro de requisições. Cada PC usa a sua branch (`feat/municipais-sapl` e
