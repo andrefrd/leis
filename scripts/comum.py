@@ -257,7 +257,7 @@ def imagem_bruta(bruto):
 
 
 def extrair_texto(bruto, url="", content_type=""):
-    """Retorna (html, texto): PDF -> pdftotext; imagem -> OCR; DOC/DOCX/ODT/RTF -> textutil; HTML direto."""
+    """Retorna (html, texto): PDF -> pdftotext; imagem -> OCR; DOC/DOCX/ODT/RTF -> textutil ou soffice; HTML direto."""
     ext = os.path.splitext(url.split("?")[0])[1].lower()
     if imagem_bruta(bruto):
         return None, ocr_imagem(bruto)[0]
@@ -272,8 +272,20 @@ def extrair_texto(bruto, url="", content_type=""):
         with tempfile.TemporaryDirectory() as tmp:
             src = os.path.join(tmp, "a" + (".doc" if bruto.startswith(b"\xd0\xcf\x11\xe0") else ext or ".doc"))
             open(src, "wb").write(bruto)
-            r = subprocess.run(["textutil", "-convert", "html", "-stdout", src], capture_output=True, timeout=300)
-            return r.stdout.decode("utf-8", "replace"), None
+            if shutil.which("textutil"):
+                r = subprocess.run(["textutil", "-convert", "html", "-stdout", src], capture_output=True, timeout=300)
+                return r.stdout.decode("utf-8", "replace"), None
+            # Linux: LibreOffice headless; perfil próprio por chamada para permitir processos simultâneos.
+            soffice = shutil.which("soffice") or shutil.which("libreoffice")
+            if not soffice:
+                raise RuntimeError("sem conversor de DOC/DOCX/ODT/RTF (textutil ou soffice)")
+            subprocess.run([soffice, f"-env:UserInstallation=file://{tmp}/perfil", "--headless",
+                            "--convert-to", "html:HTML (StarWriter):UTF8", "--outdir", tmp, src],
+                           capture_output=True, timeout=300)
+            saida = os.path.splitext(src)[0] + ".html"
+            if not os.path.exists(saida):
+                raise RuntimeError("soffice não converteu o documento")
+            return open(saida, encoding="utf-8", errors="replace").read(), None
     return decodificar(bruto, content_type), None
 
 
@@ -333,22 +345,94 @@ AVISO_SEM_TEXTO = ("> A fonte oficial não disponibiliza o texto desta norma: o 
                    "está vazio. Só os metadados foram preservados.\n\n")
 
 
-def ocr_pdf(bruto):
-    """OCR com o Vision do macOS (scripts/bin/ocr, compilado de ocr.swift)."""
-    if not os.path.exists(OCR_BIN):
+MODELO_BEST_SHA256 = "711de9dbb8052067bd42f16b9119967f30bada80d57e2ef24f65d09f531adb04"
+MOTOR_VISION = "Vision do macOS"
+
+
+def _tesseract_modelo():
+    """(programa, tessdata_dir, rotulo): tessdata_best verificado se existir, senão o do sistema."""
+    programa = shutil.which("tesseract")
+    if not programa:
+        return None
+    dados = os.path.join(os.path.dirname(OCR_BIN), "tessdata")
+    modelo = os.path.join(dados, "por.traineddata")
+    if os.path.isfile(modelo):
+        with open(modelo, "rb") as f:
+            if hashlib.sha256(f.read()).hexdigest() == MODELO_BEST_SHA256:
+                return programa, dados, "Tesseract 5 (por, tessdata_best)"
+    try:
+        r = subprocess.run([programa, "--list-langs"], capture_output=True, timeout=30)
+        if b"por" in r.stdout.split():
+            return programa, None, "Tesseract 5 (por, tessdata do sistema)"
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    return None
+
+
+def _opcoes_tesseract(dados, psm):
+    return ["-l", "por", "--oem", "1", "--psm", str(psm)] + (["--tessdata-dir", dados] if dados else [])
+
+
+def _ocr_pdf_tesseract(bruto, modelo):
+    programa, dados, _ = modelo
+    pdftoppm = shutil.which("pdftoppm")
+    if not pdftoppm:
         return ""
+    env = {**os.environ, "OMP_THREAD_LIMIT": "1"}
     with _ocr_vagas, tempfile.TemporaryDirectory() as tmp:
         pdf = os.path.join(tmp, "a.pdf")
-        open(pdf, "wb").write(bruto)
-        r = subprocess.run([OCR_BIN, pdf], capture_output=True, timeout=1800)
-        return r.stdout.decode("utf-8", "replace")
+        with open(pdf, "wb") as f:
+            f.write(bruto)
+        try:
+            subprocess.run([pdftoppm, "-r", "300", "-gray", pdf, os.path.join(tmp, "p")],
+                           capture_output=True, timeout=1800, check=True)
+        except (OSError, subprocess.SubprocessError):
+            return ""
+        paginas = sorted(n for n in os.listdir(tmp) if n.startswith("p") and n.endswith(".pgm"))
+        textos = []
+        for n in paginas:
+            try:
+                r = subprocess.run([programa, os.path.join(tmp, n), "stdout"] + _opcoes_tesseract(dados, 3),
+                                   capture_output=True, timeout=300, env=env)
+            except (OSError, subprocess.TimeoutExpired):
+                return ""
+            if r.returncode != 0:
+                return ""
+            textos.append(r.stdout.decode("utf-8", "replace").replace("\f", "").strip("\n"))
+        return "\f".join(textos) + ("\f" if textos else "")
+
+
+def ocr_pdf_motor(bruto):
+    """(texto, motor): Vision se scripts/bin/ocr existir; senão Tesseract via pdftoppm; senão ("", "")."""
+    if os.path.exists(OCR_BIN):
+        with _ocr_vagas, tempfile.TemporaryDirectory() as tmp:
+            pdf = os.path.join(tmp, "a.pdf")
+            open(pdf, "wb").write(bruto)
+            r = subprocess.run([OCR_BIN, pdf], capture_output=True, timeout=1800)
+            return r.stdout.decode("utf-8", "replace"), MOTOR_VISION
+    modelo = _tesseract_modelo()
+    if modelo:
+        return _ocr_pdf_tesseract(bruto, modelo), modelo[2]
+    return "", ""
+
+
+def aviso_ocr(motor):
+    """AVISO_OCR puro para Vision (convenção do acervo) ou sem motor; com o motor nomeado nos demais."""
+    if motor in ("", MOTOR_VISION):
+        return AVISO_OCR
+    return AVISO_OCR.replace("escaneado;", f"escaneado ({motor});")
+
+
+def ocr_pdf(bruto):
+    """OCR de PDF: Vision do macOS (scripts/bin/ocr, de ocr.swift) ou, na falta dele, Tesseract."""
+    return ocr_pdf_motor(bruto)[0]
 
 
 def ocr_imagem(bruto):
     programa = shutil.which("tesseract")
     dados = os.path.join(os.path.dirname(OCR_BIN), "tessdata")
     modelo = os.path.join(dados, "por.traineddata")
-    aprovado = "711de9dbb8052067bd42f16b9119967f30bada80d57e2ef24f65d09f531adb04"
+    aprovado = MODELO_BEST_SHA256
     if programa and os.path.isfile(modelo):
         with open(modelo, "rb") as f:
             confere = hashlib.sha256(f.read()).hexdigest() == aprovado
@@ -363,7 +447,19 @@ def ocr_imagem(bruto):
                     return texto, "Tesseract, português, tessdata_best"
             except (OSError, subprocess.TimeoutExpired):
                 pass
-    return ocr_pdf(bruto), "Vision do macOS"
+    if os.path.exists(OCR_BIN):
+        return ocr_pdf(bruto), MOTOR_VISION
+    modelo = _tesseract_modelo()
+    if programa and modelo:
+        try:
+            with _ocr_vagas:
+                r = subprocess.run([programa, "stdin", "stdout"] + _opcoes_tesseract(modelo[1], 3), input=bruto,
+                                   capture_output=True, timeout=180, env={**os.environ, "OMP_THREAD_LIMIT": "1"})
+            if r.returncode == 0:
+                return r.stdout.decode("utf-8", "replace"), modelo[2]
+        except (OSError, subprocess.TimeoutExpired):
+            pass
+    return "", MOTOR_VISION
 
 
 def pdf_escaneado(texto):
@@ -386,9 +482,10 @@ def documento_para_md(bruto, url="", content_type="", remover_inicio=()):
     if texto is not None:
         aviso = AVISO_OCR_IMAGEM.replace("imagem;", f"imagem ({motor_imagem});") if motor_imagem else ""
         if not imagem_bruta(bruto) and pdf_escaneado(texto):
-            texto_ocr = ocr_pdf(bruto)
+            texto_ocr, motor = ocr_pdf_motor(bruto)
             if len(re.sub(r"\W", "", texto_ocr)) > len(re.sub(r"\W", "", texto)):
-                texto, aviso = texto_ocr, AVISO_OCR
+                texto = texto_ocr
+                aviso = aviso_ocr(motor)
         corpo = texto_pdf_para_md(texto)
         if len(re.sub(r"\W", "", corpo)) < 80:
             return None, "imagem sem texto legível por OCR" if imagem_bruta(bruto) else "PDF sem texto legível (nem por OCR)"
