@@ -79,6 +79,20 @@ class OcrPdfSemMotorTest(unittest.TestCase):
             with mock.patch.object(comum, "OCR_BIN", fake):
                 self.assertEqual(comum.ocr_pdf_motor(b"%PDF-1.4"), ("Art. 1 texto\f", "Vision do macOS"))
 
+    def test_aviso_ocr_convencao(self):
+        self.assertEqual(comum.aviso_ocr(comum.MOTOR_VISION), comum.AVISO_OCR)
+        self.assertEqual(comum.aviso_ocr(""), comum.AVISO_OCR)
+        self.assertIn("escaneado (Tesseract X);", comum.aviso_ocr("Tesseract X"))
+
+    def test_reocr_recusa_sem_vision(self):
+        import subprocess
+        r = subprocess.run([sys.executable, "-I", os.path.join(os.path.dirname(os.path.abspath(__file__)), "reocr.py")],
+                           capture_output=True, text=True)
+        if os.path.exists(comum.OCR_BIN):
+            self.skipTest("Vision presente")
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("exige o binário Vision", r.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

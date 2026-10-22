@@ -26,7 +26,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comum import AVISO_OCR, documento_para_md  # noqa: E402
+from comum import AVISO_OCR, OCR_BIN, documento_para_md  # noqa: E402
 from corrigir_ocr import corrigir, numeros, quantos_converter  # noqa: E402
 
 RAIZ = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
@@ -80,6 +80,9 @@ def main():
     ap.add_argument("--aplicar", action="store_true", help="grava; sem isso, só relata")
     ap.add_argument("--limite", type=int, default=0, help="processa só os N primeiros (amostra)")
     a = ap.parse_args()
+    if not os.path.exists(OCR_BIN):
+        sys.exit(f"reocr exige o binário Vision ({OCR_BIN}); sem ele o texto do acervo seria "
+                 "regravado com Tesseract, de qualidade inferior. Compile scripts/ocr.swift no macOS.")
 
     if a.alvos:
         bases = [os.path.join(RAIZ, "federal") if t == "federal"

@@ -404,6 +404,13 @@ def ocr_pdf_motor(bruto):
     return "", ""
 
 
+def aviso_ocr(motor):
+    """AVISO_OCR puro para Vision (convenção do acervo) ou sem motor; com o motor nomeado nos demais."""
+    if motor in ("", MOTOR_VISION):
+        return AVISO_OCR
+    return AVISO_OCR.replace("escaneado;", f"escaneado ({motor});")
+
+
 def ocr_pdf(bruto):
     """OCR de PDF: Vision do macOS (scripts/bin/ocr, de ocr.swift) ou, na falta dele, Tesseract."""
     return ocr_pdf_motor(bruto)[0]
@@ -466,7 +473,7 @@ def documento_para_md(bruto, url="", content_type="", remover_inicio=()):
             texto_ocr, motor = ocr_pdf_motor(bruto)
             if len(re.sub(r"\W", "", texto_ocr)) > len(re.sub(r"\W", "", texto)):
                 texto = texto_ocr
-                aviso = AVISO_OCR if motor in ("", MOTOR_VISION) else AVISO_OCR.replace("escaneado;", f"escaneado ({motor});")
+                aviso = aviso_ocr(motor)
         corpo = texto_pdf_para_md(texto)
         if len(re.sub(r"\W", "", corpo)) < 80:
             return None, "imagem sem texto legível por OCR" if imagem_bruta(bruto) else "PDF sem texto legível (nem por OCR)"
