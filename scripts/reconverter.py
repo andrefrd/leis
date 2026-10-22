@@ -37,7 +37,7 @@ def reconverter_arquivo(md_path, fonte_path, uf):
     if bruto[:4] == b"%PDF" or bruto[:2] == b"PK" or bruto[:5] == b"{\\rtf":
         return False
     texto = open(md_path, encoding="utf-8").read()
-    if AVISO_OCR.strip() in texto:
+    if AVISO_OCR.strip()[:45] in texto:
         return False
     partes = texto.split("\n---\n", 1)
     if len(partes) != 2:

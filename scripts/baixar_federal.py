@@ -24,7 +24,7 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from comum import AVISO_OCR, AVISO_SEM_TEXTO, extrair_texto, ocr_pdf, texto_pdf_para_md  # noqa: E402
+from comum import AVISO_OCR, AVISO_SEM_TEXTO, extrair_texto, ocr_pdf_motor, aviso_ocr, texto_pdf_para_md  # noqa: E402
 from html2md import convert  # noqa: E402
 from integridade_html_federal import Visivel
 from integridade_anexos_decreto import anexo_proprio_ausente
@@ -297,10 +297,10 @@ def processar(d, *, revisao_identidade=False):
     if html.startswith(b"%PDF"):
         _, texto = extrair_texto(html, url)
         if not re.search(r"\bArt\.?\s*\d", texto, re.I):
-            reconhecido = ocr_pdf(html)
+            reconhecido, motor_ocr = ocr_pdf_motor(html)
             if re.search(r"\bArt\.?\s*\d", reconhecido, re.I):
                 texto = reconhecido
-                corpo = AVISO_OCR + texto_pdf_para_md(texto)
+                corpo = aviso_ocr(motor_ocr) + texto_pdf_para_md(texto)
             else:
                 return "sem_texto", info["slug"], {"id": d["id"], "norma": d["norma"], "urn": urn,
                                                    "url": url, "motivo": "PDF sem corpo normativo extraível; OCR não recuperou artigos"}
