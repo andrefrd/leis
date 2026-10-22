@@ -257,7 +257,7 @@ def imagem_bruta(bruto):
 
 
 def extrair_texto(bruto, url="", content_type=""):
-    """Retorna (html, texto): PDF -> pdftotext; imagem -> OCR; DOC/DOCX/ODT/RTF -> textutil; HTML direto."""
+    """Retorna (html, texto): PDF -> pdftotext; imagem -> OCR; DOC/DOCX/ODT/RTF -> textutil ou soffice; HTML direto."""
     ext = os.path.splitext(url.split("?")[0])[1].lower()
     if imagem_bruta(bruto):
         return None, ocr_imagem(bruto)[0]
@@ -272,8 +272,20 @@ def extrair_texto(bruto, url="", content_type=""):
         with tempfile.TemporaryDirectory() as tmp:
             src = os.path.join(tmp, "a" + (".doc" if bruto.startswith(b"\xd0\xcf\x11\xe0") else ext or ".doc"))
             open(src, "wb").write(bruto)
-            r = subprocess.run(["textutil", "-convert", "html", "-stdout", src], capture_output=True, timeout=300)
-            return r.stdout.decode("utf-8", "replace"), None
+            if shutil.which("textutil"):
+                r = subprocess.run(["textutil", "-convert", "html", "-stdout", src], capture_output=True, timeout=300)
+                return r.stdout.decode("utf-8", "replace"), None
+            # Linux: LibreOffice headless; perfil próprio por chamada para permitir processos simultâneos.
+            soffice = shutil.which("soffice") or shutil.which("libreoffice")
+            if not soffice:
+                raise RuntimeError("sem conversor de DOC/DOCX/ODT/RTF (textutil ou soffice)")
+            subprocess.run([soffice, f"-env:UserInstallation=file://{tmp}/perfil", "--headless",
+                            "--convert-to", "html:HTML (StarWriter):UTF8", "--outdir", tmp, src],
+                           capture_output=True, timeout=300)
+            saida = os.path.splitext(src)[0] + ".html"
+            if not os.path.exists(saida):
+                raise RuntimeError("soffice não converteu o documento")
+            return open(saida, encoding="utf-8", errors="replace").read(), None
     return decodificar(bruto, content_type), None
 
 
